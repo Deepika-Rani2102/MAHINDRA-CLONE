@@ -1,0 +1,697 @@
+/* FONT IMPORT */
+@font-face {
+    font-family: "VelvetMango-Regular";
+    src: url("./Assets/fonts/VelvetMango-Regular.otf");
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "VelvetMango-Regular", sans-serif;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVBAR */
+nav {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.logo {
+    height: 80px;
+}
+
+.anniversary {
+    height: 60px;
+}
+
+/* NAV LINKS */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.1rem;
+}
+
+.nav-item a:hover {
+    color: red;
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+}
+
+/* MOBILE MENU ICON */
+.mobile-menu-icon {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/*  RESPONSIVE DESIGN */
+
+/* TABLET (max 900px) */
+@media (max-width: 900px) {
+    nav {
+        padding: 0 15px;
+    }
+
+    .nav-item {
+        gap: 15px;
+    }
+
+    .nav-item a {
+        font-size: 1rem;
+    }
+}
+
+/* MOBILE (max 768px) */
+@media (max-width: 768px) {
+    .nav-item {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: white;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px 0;
+        display: none;
+        border-top: 1px solid #ddd;
+        z-index: 999;
+    }
+
+    .nav-item.show {
+        display: flex;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .anniversary {
+        display: none;
+    }
+}
+
+/* HOME BANNER */
+/* HOME BANNER */
+.home-banner {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    overflow: hidden;
+    background: #000; /* fallback for slow loading */
+}
+
+/* MOBILE IMAGE ONLY */
+.banner-mobile-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: none; /* hide for desktop */
+}
+
+/* TEXT */
+.home-banner-text {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: white;
+}
+
+/* MAIN HEADING */
+.home-banner-text h1 {
+    font-size: 2.8rem;
+    font-family: sans-serif;
+    transform: scaleX(1.15);
+    opacity: 0;
+    animation: appear 2s ease forwards;
+}
+
+/* SUBTEXT */
+.home-banner-text p {
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: appear 3s ease forwards;
+}
+
+/* HOVER ANIMATION (Desktop Only) */
+@media (min-width: 1024px) {
+    .home-banner-text:hover h1 {
+        animation: drag 1.8s ease forwards;
+    }
+    .home-banner-text:hover p {
+        animation: drag 1.8s ease forwards 0.4s;
+    }
+}
+
+/* DRAG ANIMATION */
+@keyframes drag {
+    from { transform: translateY(0px); opacity: 0; }
+    to   { transform: translateY(-60px); opacity: 1; }
+}
+
+/* APPEAR ANIMATION */
+@keyframes appear {
+    from { opacity: 0; filter: blur(6px); }
+    to   { opacity: 1; filter: blur(0px); }
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .home-banner-text {
+        top: 30%;
+        gap: 10px;
+    }
+    .home-banner-text h1 {
+        font-size: 2.4rem;
+    }
+    .home-banner-text p {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .banner-mobile-img {
+        display: block; /* show image */
+    }
+
+    .home-banner {
+        min-height: auto;
+    }
+
+    .home-banner-text {
+        position: absolute;
+        bottom: 25px;
+        left: 20px;
+        right: 20px;
+        gap: 8px;
+    }
+
+    .home-banner-text h1 {
+        font-size: 2rem;
+        transform: scaleX(1.05);
+    }
+
+    .home-banner-text p {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* GRID WRAPPER */
+.card-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;                      
+    padding: 40px 60px;       
+    max-width: 1400px;
+    margin: auto;
+}
+
+/* CARD —  */
+.card {
+    width: 100%;
+    height: 280px;                  
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;          
+    cursor: pointer;
+    background: #000;
+    box-shadow: 0px 10px 28px rgba(0,0,0,0.22);   /* soft shadow */
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .45s ease;
+    filter: brightness(0.85);
+}
+
+
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.75));
+    transition: .4s ease;
+}
+
+
+.card a {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.card a::after {
+    content: "";
+    display: block;
+    width: 65px;
+    height: 3px;
+    background: white;
+    margin-top: 6px;
+    /* opacity: 1; */
+}
+
+
+.card:hover img {
+    transform: scale(1.08);
+    filter: brightness(1);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0px 15px 35px rgba(0,0,0,0.35);
+}
+/* TABLET */
+@media (max-width: 1024px) {
+    .card-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px;
+        gap: 25px;
+    }
+
+    .card {
+        height: 250px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .card-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .card {
+        height: 230px;
+    }
+}
+.card {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+/* FAQ WRAPPER */
+.faqs {
+  width: 60%;
+  margin: 60px auto;       
+  text-align: center;
+}
+.faqs h2 {
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+.faq-item {
+  margin-bottom: 20px; 
+}
+.faq-item {
+    width: 90%;
+    max-width: 900px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 1);
+}
+
+/* Scroll animation */
+.faq-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FAQ BUTTON */
+.faq-item button {
+    width: 100%;
+    background: red;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.35s ease, transform 0.35s ease;
+}
+
+/* Button hover animation */
+.faq-item button:hover {
+    background: #cc0000;
+    transform: translateY(-3px);
+}
+
+/* Icon rotate animation */
+.faq-item button i {
+    font-size: 1.8rem;
+    transition: transform 0.35s ease;
+}
+
+.faq-item button.active i {
+    transform: rotate(180deg);
+}
+
+/* ANSWER SECTION */
+.faq-item section {
+    background: #ffebeb;
+    max-height: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: 
+        max-height 0.55s ease,
+        padding 0.4s ease,
+        opacity 0.35s ease;
+    padding: 0 15px;
+    border-radius: 0 0 12px 12px;
+    opacity: 0;
+}
+
+/* When active */
+.faq-item button.active + section {
+    max-height: 250px;
+    padding: 15px;
+    opacity: 1;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Soft fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* Tablets */
+@media (max-width: 768px) {
+    .faq-item button {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+
+    .faq-item button i {
+        font-size: 1.5rem;
+    }
+
+    .faq-item h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .faq-item {
+        width: 100%;
+    }
+
+    .faq-item button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .faq-item section {
+        font-size: 0.95rem;
+    }
+
+    .faq-item h2 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* FOOTER WRAPPER  */
+.footer-wrap {
+    width: 100%;
+    background: #f8f6ec;
+    padding: 50px 0 0 0;
+}
+
+/*  QUICK LINKS TOP SECTION  */
+.footer-one {
+    width: 100%;
+    text-align: center;
+}
+
+.header h2 {
+    font-size: 45px;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+/* QUICK LINK CARDS */
+.product-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    
+}
+
+.product {
+    width: 350px;
+    height: 220px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+.product.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product img:hover{
+    transform: scale(1.08);
+    filter: brightness(1);
+}
+
+.product a {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    font-size: 18px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 0px 0px 8px rgba(0,0,0,0.9);
+}
+
+/*  LOGO + ICONS ROW  */
+.footer-two {
+    padding: 100px 0 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin: auto;
+}
+
+.footer-left img {
+    width: 130px;
+}
+
+.footer-icons a {
+    margin-right: 12px;
+    font-size: 20px;
+    color: #000;
+}
+
+/* Divider */
+.divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 10px 0 20px;
+}
+
+/*  MAIN FOOTER LIST  */
+.footer-container {
+    width: 90%;
+    margin: auto;
+}
+
+.footer-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Each column */
+.list {
+    width: 18%;
+    min-width: 220px;
+    padding: 10px 0;
+}
+
+.list h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+/* Items */
+.list li {
+    list-style: none;
+    padding: 6px 0;
+}
+
+.list li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+}
+
+.list a:hover {
+    color: red;
+}
+
+/*  SUB-MENUS  */
+.list ul {
+    list-style: none;
+    padding-left: 15px;
+    display: none; 
+}
+
+.list li.active > ul {
+    display: block;
+}
+
+.list i.bi-chevron-down {
+    font-size: 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+.list li.active > i.bi-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Prevent overflow when expanded */
+.list {
+    overflow: hidden;
+}
+
+/* BOTTOM RED BAR */
+.footer-bottom {
+    background: red;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    
+}
+
+.footer-bottom .left,
+.footer-bottom .right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-bottom a, .footer-bottom p {
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+.left>li{
+  list-style: none;
+  padding-left: 15px;
+  
+}
+
+
+/* TABLET RESPONSIVE */
+@media (max-width: 992px) {
+    .footer-two {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .footer-list {
+        justify-content: flex-start;
+        gap: 30px;
+    }
+
+    .list {
+        width: 45%;
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+    .header h2 {
+        font-size: 26px;
+    }
+
+    .product {
+        width: 90%;
+    }
+
+    .footer-left img {
+        width: 110px;
+    }
+
+    .list {
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 15px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+}
