@@ -5,9 +5,9 @@ This project focuses on modern UI design, responsive layouts, animations, and in
 
 Live Demo
 
-🔗 Hosted Website: https://deepika-rani2102.github.io/MAHINDRA-CLONE/
+🔗 Hosted Website: https://deepika-rani-malik2102.github.io/MAHINDRA-CLONE/
 
-🔗 GitHub Repository: https://github.com/Deepika-Rani2102/MAHINDRA-CLONE
+🔗 GitHub Repository: https://github.com/deepika-rani-malik2102/MAHINDRA-CLONE
 
 Project Preview
 
